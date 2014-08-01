@@ -1,4 +1,4 @@
-<aside id="aside">
+<aside class="sidebar">
 	<?php if(is_page()): ?>
 		<?php dynamic_sidebar( 'primary-widget-area' ) ?>
 	<?php else: ?>
