@@ -62,6 +62,11 @@ post-list > div {overflow:hidden;}
 .post-list .img {float:left; margin-right: 1.2em;}
 .post-list p  {margin-bottom: .3em;}
 
+/* Sticky footer */
+html, body {height: 100%;}
+#wrap {min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -50px; }
+#footer,.push {height: 50px;}
+
 /* Layout */
 #main {}
 #wrap {min-height: 100%;}
@@ -93,7 +98,7 @@ clear: both;
 .main-menu .current-page-ancestor a {}
 
 /* Footer */
-#footer {}  
+#footer {text-align: center}  
 
 /* Template */
 .template {}

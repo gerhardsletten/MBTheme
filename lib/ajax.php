@@ -2,7 +2,7 @@
 
 function mb_ajax_example() {
   $nonce = $_POST['nonce'];
-  if ( ! wp_verify_nonce( $nonce, 'faktafyk-nonce' ) )
+  if ( ! wp_verify_nonce( $nonce, 'the-nonce' ) )
     die ( 'Busted!');
 
   $return = array();
