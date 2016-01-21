@@ -1,15 +1,14 @@
 <?php 
 
-function mb_content_nav( $nav_id ) {
-  global $wp_query;
-
-  if ( $wp_query->max_num_pages > 1 ) : ?>
-    <nav class="pagina">
-      <span class="nav-next"><?php previous_posts_link('&laquo; Nyere saker'); ?></span>
-      <span class="nav-previous"><?php next_posts_link('Eldre saker &raquo;'); ?></span>
-      
-    </nav>
-  <?php endif;
+function mb_content_nav( ) {
+ ?>
+    <div class="page-nav align-center">
+    <?php the_posts_pagination( array(
+        'prev_text' => 'Forrige side',
+        'next_text' =>'Neste side'
+      ) ); ?>
+    </div>
+  <?php 
 }
 
 add_filter('next_posts_link_attributes', 'mb_posts_link_attributes');

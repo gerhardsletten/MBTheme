@@ -1,2 +1,4 @@
 node_modules
 bower_components
+assets/dist/bundle.css
+assets/dist/bundle.js

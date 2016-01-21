@@ -1,28 +1,35 @@
 {
   "name": "MBTheme",
   "private": true,
-  "version": "1.0.0",
-  "dependencies": {},
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-jshint": "~0.9.2",
-    "grunt-contrib-cssmin": "~0.9.0",
-    "grunt-contrib-imagemin": "~0.7.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-autoprefixer": "~0.7.2",
-    "grunt-modernizr": "git+ssh://git@github.com:donaldpipowitch/grunt-modernizr.git#f54599b6032fcc3219821ebfe3d8c346feede228",
-    "grunt-newer": "~0.7.0",
-    "grunt-concurrent": "~0.5.0",
-    "load-grunt-tasks": "~0.4.0",
-    "time-grunt": "~0.3.1",
-    "jshint-stylish": "~0.1.5",
-    "grunt-bowercopy": "^1.1.0",
-    "grunt-contrib-clean": "^0.6.0"
+  "version": "1.0.1",
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "fitvids": "^1.0.2",
+    "imagesloaded": "^4.1.0",
+    "jquery": "^2.2.0",
+    "jquery-equalheights": "^1.0.4",
+    "react": "^0.14.6",
+    "underscore": "^1.8.3",
+    "fitvids": "^1.0.2"
   },
-  "engines": {
-    "node": ">=0.10.0"
+  "devDependencies": {
+    "autoprefixer": "^6.3.1",
+    "browserify": "^13.0.0",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.8.1",
+    "postcss-cli": "^2.4.0",
+    "reactify": "^1.1.1",
+    "uglify-js": "^2.6.1",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "start": "npm run watch",
+    "compile-css": "node-sass --include-path node_modules assets/sass/index.scss | postcss --use autoprefixer --autoprefixer.browsers \"last 2 versions\" > assets/dist/bundle.css",
+    "watch-css": "nodemon -e scss -x \"npm run compile-css\"",
+    "build-css": "npm run compile-css && minify assets/dist/bundle.css",
+    "build-js": "browserify -t reactify  ./assets/js/index.js | uglifyjs -cm > ./assets/dist/bundle.min.js",
+    "watch-js": "watchify -d -t reactify ./assets/js/index.js --poll 100 -o  ./assets/dist/bundle.js",
+    "watch": "npm run watch-css & npm run watch-js",
+    "build": "npm run build-js && npm run build-css"
   }
 }
